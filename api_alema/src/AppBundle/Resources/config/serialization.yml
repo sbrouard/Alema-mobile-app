@@ -1,0 +1,60 @@
+AppBundle\Entity\AccessChild:
+    attributes:
+        loginUser:
+            groups: ['user', 'access_child']
+        idChild:
+            groups: ['user', 'access_child']
+        familyLink:
+            groups: ['user', 'access_child']
+
+AppBundle\Entity\AuthToken:
+    attributes:
+        id:
+            groups: ['auth-token']
+        value:
+            groups: ['auth-token']
+        createdAt:
+            groups: ['auth-token']
+        user:
+            groups: ['auth-token']
+
+AppBundle\Entity\Child:
+    attributes:
+        id:
+            groups: ['child', 'user']
+        firstname:
+            groups: ['child', 'user']
+        lastname:
+            groups: ['child', 'user'] 
+        relative:
+            groups: ['child']
+
+AppBundle\Entity\Director:
+    attributes:
+        user:
+            groups: ['user']
+        tripManage:
+            groups: ['user']
+
+AppBundle\Entity\Relative:
+    attributes:
+        user:
+            groups: ['child', 'user']
+        familyNumber:
+            groups: ['child', 'user']
+        children:
+            groups: ['user']
+
+AppBundle\Entity\User:
+    attributes:
+        login:
+            groups: ['user', 'auth-token']
+        firstname:
+            groups: ['user', 'auth-token']
+        lastname:
+            groups: ['user', 'auth-token']
+        email:
+            groups: ['user', 'auth-token']
+        subscriptionDate:
+            groups: ['user', 'auth-token']
+

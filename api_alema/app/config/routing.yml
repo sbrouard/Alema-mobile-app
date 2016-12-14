@@ -1,0 +1,27 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+access_children:
+    type:     rest
+    resource: AppBundle\Controller\AccessChildController
+
+auth-tokens:
+    type:     rest
+    resource: AppBundle\Controller\AuthTokenController
+
+children:
+    type:     rest
+    resource: AppBundle\Controller\ChildController
+
+directors: 
+    type:     rest
+    resource: AppBundle\Controller\DirectorController
+
+relatives: 
+    type:     rest
+    resource: AppBundle\Controller\RelativeController
+
+users: 
+    type:     rest
+    resource: AppBundle\Controller\UserController
