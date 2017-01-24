@@ -1,0 +1,22 @@
+<ion-view title={{sejour.nom}} id="page8">
+  <ion-nav-buttons side="right" class="has-header">
+    <button class="button button-icon icon ion-ios-contact" ui-sref="compte"></button>
+  </ion-nav-buttons>
+  <ion-content padding="true" class="has-header" overflow-scroll="false">
+
+  	<img src={{sejour.image}} class="centerImg" />
+  	<b>Séjour:</b> {{sejour.nom}} + descrption<br><br> 
+  	enfants concernés par le séjour<br><br>
+	<b>Directeur:</b> {{sejour.directeur}}<br><br>
+	<b>Contact:</b> {{sejour.contact}}<br><br>
+	<b>Date de départ:</b> {{sejour.date_depart}} à {{sejour.hdepart}}<br>
+	<b>Lieu de départ:</b> {{sejour.lieu_depart}}<br><br>
+	<b>Date d'arrivée:</b> {{sejour.date_retour}} à {{sejour.retour}}<br> 
+	<b>Lieu d'arrivée:</b> {{sejour.lieu_retour}}<br><br>
+	<b>Activités:</b> {{sejour.activites}}<br><br>
+
+	lien vers photos et actualités
+	<ion-item id="menu-list-item1" ui-sref="menu.actualites" menu-close="">Voir les actulités de ce séjour</ion-item>
+	<ion-item id="menu-list-item2" ui-sref="menu.photos" menu-close="">Voir les photos de ce séjour</ion-item>
+	</ion-content>
+</ion-view>
