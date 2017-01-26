@@ -160,6 +160,7 @@ function ($scope, $stateParams, $state, $rootScope) {
 	$scope.data = {};
 	$scope.login = function(){
 		$rootScope.login = $scope.data.user;
+		$rootScope.admin = false;
 		console.log($rootScope.login);
 		$state.go('mesSejours');
 	};
@@ -170,10 +171,10 @@ function ($scope, $stateParams, $state, $rootScope) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $rootScope, $state) {
 	$scope.mesSejours = [
- 		{id:1,image:"img/VoyageLondre.jpeg", nom:"Londres", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:2,image:"img/timthumb.php.jpeg", nom:"Ski Evasion", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:3,image:"img/timthumb.php-3.jpeg", nom:"Surf et multiglisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:4,image:"img/timthumb.php-2.jpeg", nom:"Passeport pour la glisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"}
+ 		{id:1,image:"img/VoyageLondre.jpeg", nom:"Londres", description:"Ca va être cool !", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:2,image:"img/timthumb.php.jpeg", nom:"Ski Evasion", description:"Ca va être cool !", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:3,image:"img/timthumb.php-3.jpeg", nom:"Surf et multiglisse", description:"Ca va être cool !", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:4,image:"img/timthumb.php-2.jpeg", nom:"Passeport pour la glisse", description:"Ca va être cool !", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"}
 	];
 	$scope.change = function(id){
 		for(var sej in $scope.mesSejours){
