@@ -2,30 +2,20 @@
   <ion-nav-buttons side="right" class="has-header">
     <button class="button button-icon icon ion-ios-contact" ui-sref="compte"></button>
   </ion-nav-buttons>
-  <ion-content padding="true" class="has-header" overflow-scroll="false">
-    <div>
-      <a ui-sref="menu.sejour">
-        <img src="img/VoyageLondre.jpeg" class="centerImg" ng-click="change('Londres')">
-      </a>
-    </div>
-    <div class="spacer-25"></div>
-    <div>
-      <a ui-sref="menu.sejour">
-        <img src="img/timthumb.php.jpeg" class="centerImg"  ng-click="change('Ski Evasion')">
-      </a>
-    </div>
-    <div class="spacer-25"></div>
-    <div>
-      <a ui-sref="menu.sejour">
-        <img src="img/timthumb.php-3.jpeg" class="centerImg"  ng-click="change('Surf et Multiglisse')">
-      </a>
-    </div>
-    <div class="spacer-25"></div>
-    <div>
-      <a ui-sref="menu.sejour">
-        <img src="img/timthumb.php-2.jpeg" class="centerImg" ng-click="change('Passeport pour la glisse')">
-      </a>
-    </div>
+
+
+  <ion-content padding="true" class="has-header" overflow-scroll="true">
+      <ion-list ng-repeat="sej in mesSejours">
+
+        <a ui-sref="menu.sejour">
+            <img class="photoMesSejour" src={{sej.image}} ng-click="change({{sej.id}})">
+            <div class="txt-listSejour">
+                {{sej.nom}}
+            </div>
+        </a>
+
+      </ion-list>
     <div class="spacer-60"></div>
   </ion-content>
+
 </ion-view>

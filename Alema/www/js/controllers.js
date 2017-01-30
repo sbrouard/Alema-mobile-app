@@ -169,9 +169,20 @@ function ($scope, $stateParams, $state, $rootScope) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $rootScope, $state) {
-	$scope.change = function(sej){
-		$rootScope.sejour = sej;
-	};
+	$scope.mesSejours = [
+ 		{id:1,image:"img/VoyageLondre.jpeg", nom:"Londres", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:2,image:"img/VoyageSki.jpeg", nom:"Ski Evasion", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:3,image:"img/VoyageSurf.jpeg", nom:"Surf et multiglisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
+ 		{id:4,image:"img/timthumb.php-2.jpeg", nom:"Passeport pour la glisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"}
+	];
+	$scope.change = function(id){
+		for(var sej in $scope.mesSejours){
+			if($scope.mesSejours[sej].id == id){
+				$rootScope.sejour = $scope.mesSejours[sej];
+				break;
+			}
+		}
+	}
 
 }])
    
