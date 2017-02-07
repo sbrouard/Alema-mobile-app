@@ -89,7 +89,7 @@ function ($scope, $rootScope, $ionicModal, $ionicSlideBoxDelegate) {
 	};
 
 	$scope.showCommentaires = function(index) {
-      $scope.showModal('templates/membre/commentaire.html', 'com');
+      $scope.showModal('templates/membre/affichageCommentaire.html', 'com');
      };
 	
 	$scope.deleteImg = function(){
@@ -109,10 +109,10 @@ function ($scope, $rootScope, $ionicModal, $ionicSlideBoxDelegate) {
 	}
 }])
 
-.controller('commentaireCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+.controller('commentaireCtrl', ['$scope', '$stateParams','$http', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams) {
+function ($scope, $stateParams, $http) {
 	$scope.commentary = [
 		{id: 1, pseudo: 'Toto', date: '28/11/2016', text: 'Coucou les gens', delete: 'no'},
 		{id: 2, pseudo: 'Toto', date: '29/11/2016', text: 'Vous allez bien?', delete: 'no'},
@@ -131,10 +131,30 @@ function ($scope, $stateParams) {
 	$scope.deleteCom = function(){
 		for (var i = 0; i < $scope.commentary.length; i++) {
 			if($scope.commentary[i].delete == 'yes'){
-				console.log($scope.commentary[i].id);
+				// console.log($scope.commentary[i].id);
+				var url = 'https://alema.yoannbourgery.com/comments/' + $scope.commentary[i].id ; 
+				$http.delete(url,$scope.commentary[i].id);
 			}
 		}
-	}
+	};
+
+	$scope.postCom = function(){
+		var url = 'https://alema.yoannbourgery.com/trips/' + $scope.$id +'/comments'; 
+		var text = document.getElementById("textCommentaire").value;
+		$http.post(url,text);
+	};
+
+	$scope.GetComSej = function(){
+		var tab = [];
+		var url = 'https://alema.yoannbourgery.com/trips/' + $scope.$id +'/comments'; 
+		for (var i = 0; i < $scope.commentary.length; i++) {
+			var c = $scope.commentary[i];
+			tab[i].push(c.id,c.pseudo,$scope.$id,$scope.sejour,c.text,c.date);
+		}
+		$http.get(url,tab);
+	};
+
+
 }])
 
 .controller('actualitSCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -169,20 +189,9 @@ function ($scope, $stateParams, $state, $rootScope) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $rootScope, $state) {
-	$scope.mesSejours = [
- 		{id:1,image:"img/VoyageLondre.jpeg", nom:"Londres", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:2,image:"img/VoyageSki.jpeg", nom:"Ski Evasion", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:3,image:"img/VoyageSurf.jpeg", nom:"Surf et multiglisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"},
- 		{id:4,image:"img/timthumb.php-2.jpeg", nom:"Passeport pour la glisse", directeur:"Pascal", contact:"0601020304", date_depart:"25/12/2016",hdepart:"14h",date_retour:"12/01/2017",hretour:"16h",lieu_depart:"gearga",lieu_retour:"fezaf",activites:"natation"}
-	];
-	$scope.change = function(id){
-		for(var sej in $scope.mesSejours){
-			if($scope.mesSejours[sej].id == id){
-				$rootScope.sejour = $scope.mesSejours[sej];
-				break;
-			}
-		}
-	}
+	$scope.change = function(sej){
+		$rootScope.sejour = sej;
+	};
 
 }])
    
@@ -200,6 +209,7 @@ function ($scope, $stateParams) {
 function ($scope, $stateParams, $rootScope) {
 	console.log('ok');
 	$scope.sejour = $rootScope.sejour;
+	console.log($scope);
 }])
 
 .controller('compteCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
@@ -214,22 +224,22 @@ function ($scope, $stateParams) {
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, $stateParams, $http) {
-	// $scope.user = {login: 'test@pass.fr', password: 'test'};
-	// $http({
- //    method: 'POST',
- //    url: 'http://rest-api.local/auth-tokens',
- //    data: $scope.user,
- //    headers: {
- //     	'X-Auth-Token': '28BV+HQEd47L9zyxHusu7Cv+TkZGNWtAAJt3mV6sDGznhyS8krSmp5b3cl6sKMmdXQw='
- //     }
- //  })
- //  .success(function (data, status, headers, config) {
- //    console.log(data);
- //  })
- //  .error(function (data, status, headers, config) {
- //  	console.log(config);
- //    console.log(data);
- //  });
+		// $scope.user = {login: 'test@pass.fr', password: 'test'};
+		// $http({
+	 //    method: 'POST',
+	 //    url: 'http://rest-api.local/auth-tokens',
+	 //    data: $scope.user,
+	 //    headers: {
+	 //     	'X-Auth-Token': '28BV+HQEd47L9zyxHusu7Cv+TkZGNWtAAJt3mV6sDGznhyS8krSmp5b3cl6sKMmdXQw='
+	 //     }
+	 //  })
+	 //  .success(function (data, status, headers, config) {
+	 //    console.log(data);
+	 //  })
+	  // .error(function (data, status, headers, config) {
+	  // 	console.log(config);
+	  //   console.log(data);
+	  // });
 }])   
 
 .controller('menuGenCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller

@@ -6,7 +6,7 @@
 		<i class="deleteCom icon ion-trash-a" ng-if="$root.login == 'admin'" ng-click="deleteCom()"></i>
 		<div id="inputCommentaire">
 			    <textarea id="textCommentaire" name="commentaire" placeholder="Entrez votre commentaire"></textarea>
-			    <button id="buttonComment" class="button button-positive center">Commenter</button>
+			    <button id="buttonComment" ng-click="PostCom()" class="button button-positive center">Commenter</button>
 		</div>
 		<br/>
 		<div id="listCommentary">
