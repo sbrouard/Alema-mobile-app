@@ -1,0 +1,34 @@
+<div class="modal image-modal">
+    <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false" active-slide="activeSlide">
+        <ion-slide ng-repeat="image in photos">
+        <center><img ng-src="{{image.src}}" class="top-image"/></center>
+        	<div id="lienJalemaImg">{{image.nbJaime}}&nbsp;&nbsp;<a href="#" ng-click="e.preventDefault()">J'alema</a></div>
+			<div id="listCommentary">
+				<div ng-repeat="com in commentary" ng-if="$index %2 === 0">
+					<div id="blocCommentary" class="blocCommentary firstBlocCom" ng-if="$index < commentary.length">
+						<div>
+							<span class="pseudoCom">{{com.pseudo}}</span><span class="dateCom">{{com.date}}</span>
+						</div><br/>
+						<div class="textCom">{{com.text}}</div>
+						<input type="checkbox" ng-model="commentary[$index].delete" ng-if="$root.login == 'admin'" ng-true-value="'yes'" ng-false-value="'no'"/>
+					</div>
+					<div id="blocCommentary" class="blocCommentary secondBlocCom" ng-if="$index + 1< commentary.length">
+						<div>
+							<span class="pseudoCom">{{com.pseudo}}</span><span class="dateCom">{{com.date}}</span>
+						</div><br/>
+						<div class="textCom">{{com.text}}</div>
+						<input type="checkbox" ng-model="commentary[$index + 1].delete" ng-if="$root.login == 'admin'" ng-true-value="'yes'" ng-false-value="'no'"/>
+					</div>
+				</div>
+			</div>
+
+			<div id="inputCommentaire">
+			    <textarea id="textCommentaire" name="commentaire" placeholder="Entrez votre commentaire"></textarea>
+			    <button id="buttonComment" class="button button-positive center" ng-click="postCom()" >Commenter</button>
+
+			    <button id="buttonComment" ng-if="$root.login == 'admin'" class="button button-positive center" ng-click="deleteCom()" >Supprimer</button>
+
+			</div>
+        </ion-slide>
+    </ion-slide-box>
+</div>
