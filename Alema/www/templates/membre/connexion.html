@@ -3,14 +3,16 @@
     <form id="connexion-form2" class="list">
       <label class="item item-input item-stacked-label" id="connexion-input3">
         <span class="input-label">Login</span>
-        <input type="text" placeholder="Login" ng-model="data.user">
+        <input type="text" placeholder="Login" ng-model="data.login">
       </label>
       <label class="item item-input item-stacked-label" id="connexion-input4">
         <span class="input-label">Mot de passe</span>
         <input type="password" placeholder="Mot de passe" ng-model="data.password">
-      </label>
+      </label><br/>
+      <input type="checkbox" name="remember" ng-model="remember.remember" ng-true-value="'yes'" ng-false-value="'no'"> Se souvenir de moi
       <button id="connexion-button8" class="button button-positive  button-block" ng-click="login()">Connexion</button>
      </form>
-     <a href="#" class="centerLink">Mot de passe oublié</a>
+     <a ui-sref="passwordForget" class="centerLink">Mot de passe oublié</a>
+     <div ng-show="load" class="iconLoad">Chargement<br/><ion-spinner icon="bubbles"></ion-spinner></div>
   </ion-content>
 </ion-view>

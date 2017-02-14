@@ -36,6 +36,18 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('addActuality', {
+    url: '/AddActuality',
+    templateUrl: 'templates/membre/addActuality.html',
+    controller: 'addActualityCtrl'
+  })
+
+  .state('showActuality', {
+    url: '/ShowActuality',
+    templateUrl: 'templates/membre/showActuality.html',
+    controller: 'showActualityCtrl'
+  })
+
   .state('menu.commentaires', {
     url: '/Commentaires',
     views: {
@@ -50,7 +62,8 @@ angular.module('app.routes', [])
     url: '/Information',
     views: {
       'side-menu21': {
-        templateUrl: 'templates/membre/information.html'
+        templateUrl: 'templates/membre/information.html',
+        controller: 'informationCtrl'
       }
     }
   })
@@ -68,10 +81,34 @@ angular.module('app.routes', [])
     controller: 'compteCtrl'
   })
   
+  .state('modifPassword', {
+    url: '/ModifPassword',
+    templateUrl : 'templates/membre/modifPassword.html',
+    controller: 'modifPasswordCtrl'
+  })
+
+  .state('modifProfil', {
+    url: '/ModifProfil',
+    templateUrl : 'templates/membre/modifProfil.html',
+    controller: 'modifProfilCtrl'
+  })
+
+  .state('manageChild', {
+    url: '/ManageChild',
+    templateUrl : 'templates/membre/manageChild.html',
+    controller: 'manageChildCtrl'
+  })
+
   .state('connexion', {
     url: '/Connexion',
     templateUrl: 'templates/membre/connexion.html',
     controller: 'connexionCtrl'
+  })
+
+  .state('passwordForget', {
+    url: '/PasswordForget',
+    templateUrl: 'templates/membre/passwordForget.html',
+    controller: 'passwordForgetCtrl'
   })
 
   .state('mesSejours', {
@@ -84,18 +121,6 @@ angular.module('app.routes', [])
     url: '/Inscription',
     templateUrl: 'templates/membre/inscription.html',
     controller: 'inscriptionCtrl'
-  })
-
-
-  .state('menu.sejour', {
-    url: '/Sejour',
-    cache: false,
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/membre/sejour.html',
-        controller: 'sJourCtrl'
-      }
-    }
   })
 
   .state('menuGen', {
