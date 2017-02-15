@@ -55,6 +55,28 @@ class AuthTokenController extends Controller
     }
 
     /**
+     * @Rest\View(statusCode=Response::HTTP_NO_CONTENT)
+     * @Rest\Delete("/auth-tokens/{login}")
+     */
+    public function removeAuthTokenAction(Request $request)
+    {
+        $em = $this->get('doctrine.orm.entity_manager');
+        $authTokens = $em->getRepository('AppBundle:AuthToken')
+                    ->findByUser($request->get('login'));
+        /* @var $authToken AuthToken */
+
+        $connectedUser = $this->get('security.token_storage')->getToken()->getUser();
+        foreach($authTokens as $authToken){
+            if ($authToken && $authToken->getUser()->getLogin() === $connectedUser->getLogin()) {
+                $em->remove($authToken);
+                $em->flush();
+            } else {
+                throw new \Symfony\Component\HttpKernel\Exception\BadRequestHttpException("Bad Request");
+            }
+        }
+    }
+
+    /**
     * @Rest\View()
     * @Rest\Options("/auth-tokens")
     */

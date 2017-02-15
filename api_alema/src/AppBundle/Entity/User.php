@@ -44,10 +44,28 @@ class User implements UserInterface
      */
     protected $password;
 
+    //Utile quand on veut changer son mot de passe pour vérifier que l'ancien est bon
+    protected $oldPassword;
+
     /**
      * @ORM\OneToMany(targetEntity="AccessChild", mappedBy="loginUser")
      */
     protected $accessChildren;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="loginUser")
+     */
+    protected $comment;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LikePicture", mappedBy="loginUser")
+     */
+    protected $likePicture;
+
+    /**
+     * @ORM\OneToMany(targetEntity="LikeActuality", mappedBy="loginUser")
+     */
+    protected $likeActuality;
 
     /**
      * @ORM\Column(type="json_array")
@@ -60,6 +78,9 @@ class User implements UserInterface
     {
         $this->subscriptionDate = new DateTime('now');
         $this->accessChildren = new ArrayCollection();
+        $this->comment = new ArrayCollection();
+        $this->likePicture = new ArrayCollection();
+        $this->likeActuality = new ArrayCollection();
     }
 
     public function getLogin()
@@ -119,12 +140,44 @@ class User implements UserInterface
         $this->password = $password;
     }
 
+    public function getOldPassword(){
+        return $this->oldPassword;
+    }
+
+    public function setOldPassword($oldPassword){
+        $this->oldPassword = $oldPassword;
+    }
+
     public function getAccessChildren(){
         return $this->accessChildren;
     }
 
     public function setAccessChildren($accessChildren){
         $this->accessChildren = $accessChildren;
+    }
+
+    public function getComment(){
+        return $this->comment;
+    }
+
+    public function setComment($comment){
+        $this->comment = $comment;
+    }
+
+    public function getLikePicture(){
+        return $this->likePicture;
+    }
+
+    public function setLikePicture($likePicture){
+        $this->likePicture = $likePicture;
+    }
+
+    public function getLikeActuality(){
+        return $this->likeActuality;
+    }
+
+    public function setLikeActuality($likeActuality){
+        $this->likeActuality = $likeActuality;
     }
 
     public function getPlainPassword(){

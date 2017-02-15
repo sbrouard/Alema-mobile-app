@@ -31,8 +31,17 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
             return;
         }
 
+        //Pour un oublie de mot de passe
+        if ($request->getMethod() === "POST" && preg_match('/\/users\/lost\//', $request->getPathInfo()) === 1) {
+            return;
+        }
         //Pour une inscription
         if($request->getMethod() === "POST" && ($this->httpUtils->checkRequestPath($request, '/relatives') || $this->httpUtils->checkRequestPath($request, '/users'))){
+            return;
+        }
+
+        //Pour encoder un mot de passe
+        if ($request->getMethod() === "POST" && $this->httpUtils->checkRequestPath($request, '/encodePassword')) {
             return;
         }
 

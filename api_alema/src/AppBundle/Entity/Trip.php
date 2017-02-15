@@ -23,14 +23,29 @@ class Trip
     protected $name;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     protected $dateStart;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string")
+     */
+    protected $placeStart;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $placeEnd;
+
+    /**
+     * @ORM\Column(type="datetime")
      */
     protected $dateEnd;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $numberPlace; 
 
     /**
      * @ORM\Column(type="string")
@@ -52,11 +67,31 @@ class Trip
      * @ORM\OneToMany(targetEntity="ParticipateTrip", mappedBy="idTrip")
      */
     protected $childParticipate;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="idTrip")
+     */
+    protected $comment;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Actuality", mappedBy="idTrip")
+     */
+    protected $idActuality;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="idTrip")
+     */
+    protected $idPicture;
+
 
     public function __construct()
     {
         $this->childParticipate = new ArrayCollection();
+        $this->comment = new ArrayCollection();
+        $this->idActuality = new ArrayCollection();
+        $this->idPicture = new ArrayCollection();
     }
+    
     public function getId()
     {
         return $this->id;
@@ -87,6 +122,16 @@ class Trip
         $this->dateStart = $dateStart;
     }
 
+    public function getPlaceStart()
+    {
+        return $this->placeStart;
+    }
+
+    public function setPlaceStart($placeStart)
+    {
+        $this->placeStart = $placeStart;
+    }
+
     public function getDateEnd()
     {
         return $this->dateEnd;
@@ -95,6 +140,16 @@ class Trip
     public function setDateEnd($dateEnd)
     {
         $this->dateEnd = $dateEnd;
+    }
+
+    public function getPlaceEnd()
+    {
+        return $this->placeEnd;
+    }
+
+    public function setPlaceEnd($placeEnd)
+    {
+        $this->placeEnd = $placeEnd;
     }
 
     public function getLocation()
@@ -117,6 +172,16 @@ class Trip
         $this->urlPicture = $urlPicture;
     }
 
+    public function getNumberPlace()
+    {
+        return $this->numberPlace;
+    }
+
+    public function setNumberPlace($numberPlace)
+    {
+        $this->numberPlace = $numberPlace;
+    }
+
     public function getManager(){
         return $this->manager;
     }
@@ -132,6 +197,24 @@ class Trip
 
     public function setChildParticipate($childParticipate){
         $this->childParticipate = $childParticipate;
+        return $this;
+    }
+
+    public function getIdActuality(){
+        return $this->idActuality;
+    }
+
+    public function setIdActuality($idActuality){
+        $this->idActuality = $idActuality;
+        return $this;
+    }
+
+    public function getIdPicture(){
+        return $this->idPicture;
+    }
+
+    public function setIdPicture($idPicture){
+        $this->idPicture = $idPicture;
         return $this;
     }
 }

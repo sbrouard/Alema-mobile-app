@@ -2,26 +2,48 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-access_children:
+access_children: 
     type:     rest
     resource: AppBundle\Controller\AccessChildController
 
-auth-tokens:
+actuality:
+    type:     rest
+    resource: AppBundle\Controller\ActualityController
+
+auth_tokens: 
     type:     rest
     resource: AppBundle\Controller\AuthTokenController
 
-children:
+comments:
     type:     rest
-    resource: AppBundle\Controller\ChildController
+    resource: AppBundle\Controller\CommentController
 
-directors: 
+like_actualities: 
     type:     rest
-    resource: AppBundle\Controller\DirectorController
+    resource: AppBundle\Controller\LikeActualityController
+
+like_pictures: 
+    type:     rest
+    resource: AppBundle\Controller\LikePictureController
+
+participate_trips: 
+    type:     rest
+    resource: AppBundle\Controller\ParticipateTripController
+
+pictures: 
+    type:     rest
+    resource: AppBundle\Controller\PictureController
 
 relatives: 
     type:     rest
     resource: AppBundle\Controller\RelativeController
 
+trips: 
+    type:     rest
+    resource: AppBundle\Controller\TripController
+
 users: 
     type:     rest
     resource: AppBundle\Controller\UserController
+
+

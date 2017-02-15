@@ -1,12 +1,29 @@
 AppBundle\Entity\AccessChild:
     attributes:
+        id:
+            groups: ['user', 'child', 'access_child']
         loginUser:
-            groups: ['user', 'access_child']
+            groups: ['child', 'access_child']
         idChild:
             groups: ['user', 'access_child']
         familyLink:
-            groups: ['user', 'access_child']
+            groups: ['user', 'child', 'access_child']
 
+AppBundle\Entity\Actuality:
+    attributes:
+        id:
+            groups: ['actuality', 'like_actuality']
+        title:
+            groups: ['actuality', 'like_actuality']
+        date:
+            groups: ['actuality', 'like_actuality']
+        text:
+            groups: ['actuality', 'like_actuality']
+        pictureName:
+            groups: ['actuality', 'like_actuality']
+        likeActuality:
+            groups: ['actuality']
+            
 AppBundle\Entity\AuthToken:
     attributes:
         id:
@@ -21,40 +38,122 @@ AppBundle\Entity\AuthToken:
 AppBundle\Entity\Child:
     attributes:
         id:
-            groups: ['child', 'user']
+            groups: ['user', 'child', 'access_child', 'participate_trip']
         firstname:
-            groups: ['child', 'user']
+            groups: ['user', 'child', 'access_child', 'participate_trip']
         lastname:
-            groups: ['child', 'user'] 
+            groups: ['user', 'child', 'access_child', 'participate_trip']
+        familyNumber:
+            groups: ['user', 'child', 'access_child']
         relative:
+            groups: ['child', 'access_child']
+        accessChildren:
             groups: ['child']
+
+AppBundle\Entity\Comment:
+    attributes:
+        id:
+            groups: ['comment']
+        loginUser:
+            groups: ['comment']
+        idTrip:
+            groups: ['comment']
+        text:
+            groups: ['comment']
+        date:
+            groups: ['comment']
 
 AppBundle\Entity\Director:
     attributes:
         user:
-            groups: ['user']
+            groups: ['user', 'trip']
         tripManage:
             groups: ['user']
+
+AppBundle\Entity\LikeActuality:
+    attributes:
+        id:
+            groups: ['like_actuality', 'actuality', 'user']
+        loginUser:
+            groups: ['like_actuality', 'actuality']
+        idActuality:
+            groups: ['like_actuality', 'user']
+
+AppBundle\Entity\LikePicture:
+    attributes:
+        id:
+            groups: ['like_picture', 'picture', 'user']
+        loginUser:
+            groups: ['like_picture', 'picture']
+        idPicture:
+            groups: ['like_picture', 'user']
+
+AppBundle\Entity\ParticipateTrip:
+    attributes:
+        idTrip:
+            groups: ['child', 'participate_trip']
+        idChild:
+            groups: ['user', 'participate_trip']
+
+AppBundle\Entity\Picture:
+    attributes:
+        id:
+            groups: ['picture', 'like_picture', 'user']
+        date:
+            groups: ['picture', 'like_picture']
+        pictureName:
+            groups: ['picture', 'like_picture']
+        likePicture:
+            groups: ['picture']
 
 AppBundle\Entity\Relative:
     attributes:
         user:
-            groups: ['child', 'user']
+            groups: ['user', 'child', 'access_child']
         familyNumber:
-            groups: ['child', 'user']
+            groups: ['user', 'child', 'access_child']
         children:
             groups: ['user']
+
+AppBundle\Entity\Trip:
+    attributes:
+        id:
+            groups: ['user', 'trip', 'participate_trip', 'comment']
+        name:
+            groups: ['user', 'trip', 'participate_trip', 'comment']
+        dateStart:
+            groups: ['user', 'trip', 'participate_trip']
+        dateEnd:
+            groups: ['user', 'trip', 'participate_trip']
+        placeStart:
+            groups: ['user', 'trip', 'participate_trip']
+        placeEnd:
+            groups: ['user', 'trip', 'participate_trip']
+        numberPlace:
+            groups: ['user', 'trip']
+        location:
+            groups: ['user', 'trip']
+        urlPicture:
+            groups: ['user', 'trip', 'participate_trip']
+        manager:
+            groups: ['trip']
 
 AppBundle\Entity\User:
     attributes:
         login:
-            groups: ['user', 'auth-token']
+            groups: ['user', 'auth-token', 'access_child', 'comment', 'like_picture', 'picture', 'actuality', 'like_actuality']
         firstname:
-            groups: ['user', 'auth-token']
+            groups: ['user', 'auth-token', 'access_child', 'comment', 'trip']
         lastname:
-            groups: ['user', 'auth-token']
+            groups: ['user', 'auth-token', 'access_child', 'comment', 'trip']
         email:
-            groups: ['user', 'auth-token']
+            groups: ['user', 'auth-token', 'access_child', 'trip']
         subscriptionDate:
+            groups: ['user', 'auth-token', 'access_child']
+        roles:
             groups: ['user', 'auth-token']
+        accessChildren:
+            groups: ['user']
+        likePicture:
+            groups: ['user']
 

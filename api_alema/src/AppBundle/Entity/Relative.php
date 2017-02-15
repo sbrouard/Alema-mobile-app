@@ -23,7 +23,7 @@ class Relative
 	protected $familyNumber;
 
 	/**
-     * @ORM\OneToMany(targetEntity="Child", mappedBy="relative")
+     * @ORM\OneToMany(targetEntity="Child", mappedBy="relative", cascade={"persist"})
      * @ORM\JoinColumn(name="login", referencedColumnName="id")
      * @var Child[]
      */

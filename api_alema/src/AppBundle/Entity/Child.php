@@ -33,7 +33,7 @@ class Child
     protected $familyNumber;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Relative", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="Relative", inversedBy="children", cascade={"persist"})
      * @ORM\JoinColumn(name="login_relative", referencedColumnName="user")
      * @var Relative
      */
@@ -48,7 +48,7 @@ class Child
      * @ORM\OneToMany(targetEntity="ParticipateTrip", mappedBy="idChild")
      */
     protected $tripParticipate;
-
+    
     public function __construct()
     {
         $this->accessChildren = new ArrayCollection();

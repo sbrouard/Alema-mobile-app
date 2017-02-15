@@ -6,12 +6,6 @@ AppBundle\Entity\Credentials:
         password:
             - NotBlank: ~
             - Type: string
-            
-AppBundle\Entity\Director:
-    properties:
-        user:
-            - NotBlank: ~
-            - Valid: ~
 
 AppBundle\Entity\Relative:
     constraints:
@@ -20,6 +14,8 @@ AppBundle\Entity\Relative:
         user:
             - NotBlank: ~
             - Valid: ~
+        familyNumber:
+            - NotBlank: ~
 
 AppBundle\Entity\User:
     constraints:
