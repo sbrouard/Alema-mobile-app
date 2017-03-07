@@ -8,6 +8,9 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 	$rootScope.url = 'https://alema.yoannbourgery.com/';
 	$rootScope.token = $localStorage.token;
 	$rootScope.role = $localStorage.role;
+	$rootScope.brochure = {};
+	$rootScope.brochure.season = '';
+	$rootScope.brochure.type = '';
 })
 
 .config(function($translateProvider) {
@@ -57,7 +60,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 					$scope.showAlert = function() {
 						var alertPopup = $ionicPopup.alert({
 							title: 'Valide',
-							template: 'Votre mot de passe a été réinitiliasé et envoyé par mail'
+							template: 'Votre mot de passe a été réinitialisé et envoyé par mail'
 						});
 					};
 					$scope.showAlert();
@@ -1132,6 +1135,60 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 					$scope.showAlert();
 				});
 
+		};
+	}
+])
+
+.controller('brochureGenCtrl', ['$scope', '$state', '$rootScope', '$http',
+	function($scope, $state, $rootScope, $http) {
+		console.log($scope);
+		$scope.brochure = {};
+		$scope.brochure.season = '';
+		$scope.season = function(season){
+			if (season == 0) {
+				$scope.brochure.season = "Eté";
+				$rootScope.brochure.season = "Eté";
+
+			}
+			else{
+				$scope.brochure.season = 'Hiver';
+				$rootScope.brochure.season = 'Hiver';
+			}
+		};
+	}
+])
+
+.controller('askBrochureGenCtrl', ['$scope', '$state', '$rootScope', '$http','$ionicPopup',
+	function($scope, $state, $rootScope, $http, $ionicPopup) {
+		$scope.data = {};
+		$scope.sendBrochure = function() {
+			$http({
+				method: 'POST',
+				url: $rootScope.url + 'brochure-summer',
+				data: $scope.data,
+				headers: {
+					'X-Auth-Token' : $rootScope.token
+				} 
+			})
+			.success(function(data, status, headers, config) {
+					$scope.showAlert = function() {
+						var alertPopup = $ionicPopup.alert({
+							title: 'Envoi réussi',
+							template: 'La brochure a bien été envoyée !'
+						});
+					};
+					$scope.showAlert();
+					$state.go('mesSejours');
+			})
+			.error(function(data, status, headers, config) {
+					$scope.showAlert = function() {
+						var alertPopup = $ionicPopup.alert({
+							title: 'Erreur',
+							template: 'Une erreur s\'est produite '
+						});
+					};
+					$scope.showAlert();
+			});
 		};
 	}
 ])

@@ -149,6 +149,27 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('menuGen.brochure_gen',{
+    url: '/Brochure_gen',
+    views:{
+      'side-menuGen': {
+        templateUrl: 'templates/general/brochure_gen.html',
+        controller: 'brochureGenCtrl'
+      }
+    }
+  })
+
+   .state('menuGen.askBrochureGen',{
+    url: '/AskBrochureGen',
+    views:{
+      'side-menuGen':{
+        templateUrl: 'templates/general/askBrochureGen.html',
+        controller: 'askBrochureGenCtrl'
+      }
+    }
+  })
+
+
   .state('menuGen.contact_gen', {
     url: '/Contact_gen',
     views: {
