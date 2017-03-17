@@ -1,0 +1,13 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Supprimer un directeur{% endblock %}
+
+{% block body %}
+	{% if ok is defined %}
+		<div class="alert alert-success">Directeur bien supprimé</div>
+	{% endif %}
+	{{ form_start(form) }}
+	{{form_label(form.choiceDirector, "Choississez le directeur à supprimer")}}
+	{{form_widget(form.choiceDirector)}}
+	{{ form_end(form) }}
+{% endblock %}

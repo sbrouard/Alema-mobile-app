@@ -1,0 +1,22 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Supprimer une photo{% endblock %}
+{% block body %}
+	{{ form_start(form1) }}
+		<div class="flexRow">
+			<div>
+				{{ form_widget(form1.deleteAction)}}
+			</div>
+			<div class="backChoiceTrip">
+				<a href="{{path('delete_picture')}}"><button type="button">Retour</button></a>
+			</div>
+		</div>
+		{% for picture in pictures %}
+			<div id="menu" class="col-md-3">
+				{% set pictureIndex = picture.id %}
+				{{ form_widget(attribute(form1, pictureIndex)) }}
+				<img class="galeryPicture" src="{{ picture.pictureName }}" width="100%" height="25%">
+			</div>
+		{% endfor %}
+	{{ form_end(form1) }}
+{% endblock %}

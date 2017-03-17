@@ -1,18 +1,28 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
-
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        AppBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
     role_hierarchy:
         # Un parent hérite des utilisateurs
         ROLE_RELATIVE: [ROLE_USER]
         # Un directeur hérite des utilisateurs
         ROLE_DIRECTOR: [ROLE_USER]
+        # Un admin hérite de tout
+        ROLE_ADMIN: [ROLE_DIRECTOR, ROLE_RELATIVE]
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         auth_token_user_provider:
             id: auth_token_user_provider
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin:
+                        password: root
+                        roles: ROLE_ADMIN
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,6 +30,17 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        admin:
+            pattern: ^/(admin|login_check|login|logout)
+            anonymous: 
+            provider: in_memory
+            form_login:
+                login_path: login
+                check_path: login_check
+                default_target_path: /admin/accueil
+            logout:
+                path:   logout
+                target: /login
         main:
             pattern: ^/
             stateless: true
@@ -28,12 +49,16 @@ security:
             provider: auth_token_user_provider
             anonymous: ~
             # activate different ways to authenticate
-
             # http_basic: ~
             # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        # require ROLE_ADMIN for /*
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+
     encoders:
         AppBundle\Entity\User:
             algorithm: bcrypt

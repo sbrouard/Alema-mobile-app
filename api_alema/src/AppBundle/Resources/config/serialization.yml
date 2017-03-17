@@ -120,21 +120,23 @@ AppBundle\Entity\Trip:
         id:
             groups: ['user', 'trip', 'participate_trip', 'comment']
         name:
-            groups: ['user', 'trip', 'participate_trip', 'comment']
+            groups: ['user', 'trip', 'participate_trip', 'comment', 'trip_commun']
         dateStart:
-            groups: ['user', 'trip', 'participate_trip']
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
         dateEnd:
-            groups: ['user', 'trip', 'participate_trip']
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
         placeStart:
-            groups: ['user', 'trip', 'participate_trip']
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
         placeEnd:
-            groups: ['user', 'trip', 'participate_trip']
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
         numberPlace:
-            groups: ['user', 'trip']
+            groups: ['user', 'trip', 'trip_commun']
         location:
-            groups: ['user', 'trip']
+            groups: ['user', 'trip', 'trip_commun']
         urlPicture:
-            groups: ['user', 'trip', 'participate_trip']
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
+        description:
+            groups: ['user', 'trip', 'participate_trip', 'trip_commun']
         manager:
             groups: ['trip']
 

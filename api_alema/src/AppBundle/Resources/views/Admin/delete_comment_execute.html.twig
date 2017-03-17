@@ -1,0 +1,22 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Supprimer un commentaire{% endblock %}
+{% block body %}
+	{{ form_start(form) }}
+		<div class="flexRow">
+			<div>
+				{{ form_widget(form.deleteAction)}}
+			</div>
+			<div class="backChoiceTrip">
+				<a href="{{path('delete_comment')}}"><button type="button">Retour</button></a>
+			</div>
+		</div>
+		{% for comment in comments %}
+			<div>
+				{% set commentIndex = comment.id %}
+				{{ form_widget(attribute(form, commentIndex)) }}
+				{{comment.text}}
+			</div>
+		{% endfor %}
+	{{ form_end(form) }}
+{% endblock %}

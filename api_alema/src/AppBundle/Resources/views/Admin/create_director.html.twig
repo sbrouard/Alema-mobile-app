@@ -1,0 +1,29 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Créer un directeur {% endblock %}
+{% block body %}
+	{% if ok is defined %}
+		<div class="alert alert-success">Directeur bien créé</div>
+	{% endif %}
+	{% if ko is defined %}
+		<div class="alert alert-danger">{{ko}}</div>
+	{% endif %}
+	<div class="form-style-8">
+  		<h2>Créer un directeur</h2>
+		{{ form_start(form) }}
+		{{form_label(form.login, "Login")}}
+		{{form_widget(form.login)}}
+		{{form_label(form.lastname, "Nom")}}
+		{{form_widget(form.lastname)}}
+		{{form_label(form.firstname, "Prénom")}}
+		{{form_widget(form.firstname)}}
+		{{form_label(form.email, "Email")}}
+		{{form_widget(form.email)}}
+		{{form_label(form.password, "Mot de passe")}}
+		{{form_widget(form.password)}}
+		{{form_label(form.confirmPassword, "Confirmation mot de passe")}}
+		{{form_widget(form.confirmPassword)}}
+		{{form_widget(form.save)}}
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
