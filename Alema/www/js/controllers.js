@@ -1328,3 +1328,53 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 
 	}
 ])
+
+
+
+
+
+
+
+
+.controller('sejoursCtrl', ['$scope', '$http', '$rootScope', '$state',
+	function($scope, $http, $rootScope, $state) {
+		$scope.$on("$ionicView.enter", function(event, data) {
+			//$scope.date = new Date();
+			//$scope.load = true;
+			$scope.data = {};
+			$http({
+					method: 'GET',
+					url: $rootScope.url + 'trips',
+					/*data: $scope.data/*,
+					headers: {
+						'X-Auth-Token': $rootScope.token
+					}*/
+				})
+				.success(function(data, status, headers, config) {
+					$scope.sejours_gen = data;
+					console.log("récupération des séjours: OK");
+					console.log($scope.sejours_gen.length);
+					/*for (var i = 0; i < $scope.sejours.length; i++) {
+						var dateStart = new Date($scope.sejours[i].dateStart);
+						var dateEnd = new Date($scope.sejours[i].dateEnd);
+						if (dateEnd < $scope.date) {
+							$scope.sejours[i].info = "Fini";
+						} else if (dateStart > $scope.date) {
+							$scope.sejours[i].info = "A Venir";
+						} else {
+							$scope.sejours[i].info = "En cours";
+						}
+					}*/
+					$scope.load = false;
+				})
+				.error(function(data, status, headers, config) {
+					console.log("echec de la récupération des séjours")
+				});
+		});
+		/*$scope.change = function(id) {
+			$rootScope.sejour_gen.name = $scope.sejours_gen[id].name;
+			$rootScope.sejourGenId = $scope.sejours_gen[id].id;
+		};*/
+
+	}
+])
