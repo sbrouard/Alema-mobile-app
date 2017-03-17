@@ -4,7 +4,7 @@
   </ion-nav-buttons>
   <ion-content padding="true" class="has-header" overflow-scroll="false">
     <div ng-repeat="sej in sejours" class="containerImg">
-        Séjour {{sej.name}} <br/>
+        <span class="sejTitle">Séjour {{sej.name}} </span><br/>
         <span ng-if="$root.role != 'ROLE_DIRECTOR'"> 
           Enfant participant : 
           <span ng-repeat="child in sej.child">
