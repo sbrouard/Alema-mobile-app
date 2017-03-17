@@ -1,7 +1,64 @@
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+#Route pour le site
+add_director:
+    path:     /admin/add-director
+    defaults: { _controller: AppBundle:AdminDirector:addDirector }
 
+add_trip:
+    path: /admin/add-trip
+    defaults: { _controller: AppBundle:AdminTrip:addTrip }
+create_director:
+    path: /admin/create-director
+    defaults: { _controller: AppBundle:AdminDirector:createDirector }
+
+delete_comment:
+    path: /admin/delete-comment
+    defaults: { _controller: AppBundle:AdminTrip:deleteComment }
+
+delete_comment_execute:
+    path: /admin/delete-comment/{id}
+    defaults: { _controller: AppBundle:AdminTrip:deleteCommentExecute }
+
+delete_director:
+    path: /admin/delete-director
+    defaults: { _controller: AppBundle:AdminDirector:deleteDirector }
+
+delete_picture:
+    path: /admin/delete-picture
+    defaults: { _controller: AppBundle:AdminTrip:deletePicture }
+
+delete_picture_execute:
+    path: /admin/delete-picture/{id}
+    defaults: { _controller: AppBundle:AdminTrip:deletePictureExecute }
+
+delete_trip:
+    path: /admin/delete-trip
+    defaults: { _controller: AppBundle:AdminTrip:deleteTrip }
+
+get_picture:
+    path: /admin/get-picture
+    defaults: { _controller: AppBundle:AdminTrip:getPicture }
+
+home:
+    path: /admin/accueil
+    defaults: {_controller: AppBundle:Admin:home}
+login:
+    path:     login
+    defaults: { _controller: AppBundle:Admin:login }
+
+login_check:
+    path: login_check
+
+logout:
+    path: logout
+    
+synchronize:
+    path: /admin/synchronize
+    defaults: { _controller: AppBundle:AdminChild:synchronize}
+    
+#Route pour l'api
 access_children: 
     type:     rest
     resource: AppBundle\Controller\AccessChildController

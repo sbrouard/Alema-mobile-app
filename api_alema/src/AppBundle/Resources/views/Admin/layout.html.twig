@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block title %}Accueil{% endblock %}</title>
+
+  {% block stylesheets %}
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/app/css/style.css') }}">
+  {% endblock %}
+</head>
+
+<body>
+  <div class="container">
+    <div id="header" class="jumbotron">
+      <h2 class="center">Site d'administration de l'application mobile d'Alema</h2>
+    </div>
+
+    <div class="row">
+      <div id="menu" class="col-md-3">
+        <ul id="menu-accordeon">
+          <li><a href="#">Séjour</a>
+            <ul>
+              <li><a href="{{path('add_trip')}}">Ajouter un séjour</a></li>
+              <li><a href="{{path('get_picture')}}">Récupérer les photos</a></li>
+              <li><a href="{{path('delete_picture')}}">Supprimer une photo</a></li>
+              <li><a href="{{path('delete_comment')}}">Supprimer un commentaire</a></li>
+              <li><a href="{{path('delete_trip')}}">Supprimer un séjour</a></li>
+            </ul>
+          </li>
+
+          <li><a href="#">Enfant</a>
+            <ul>
+            	<li><a href="{{path('synchronize')}}">Synchroniser les enfants et les séjours</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Directeur</a>
+            <ul>
+            	<li><a href="{{path('create_director')}}">Créer un directeur</a></li>
+            	<li><a href="{{path('add_director')}}">Ajouter un directeur</a></li>
+            	<li><a href="{{path('delete_director')}}">Supprimer un directeur</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Utilisateur</a>
+            <ul>
+            	<li><a href="">Supprimer un utilisateur</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="content" class="col-md-9">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  {% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  {% endblock %}
+
+</body>
+</html>

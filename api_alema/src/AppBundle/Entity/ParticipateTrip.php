@@ -12,14 +12,14 @@ class ParticipateTrip
 	
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Trip", inversedBy="tripParticipate")
+	 * @ORM\ManyToOne(targetEntity="Trip", inversedBy="childParticipate")
 	 * @ORM\JoinColumn(name="id_trip", referencedColumnName="id")
 	 */
 	protected $idTrip;
 
 	/**
 	 * @ORM\Id
-	 * @ORM\ManyToOne(targetEntity="Child", inversedBy="childParticipate")
+	 * @ORM\ManyToOne(targetEntity="Child", inversedBy="tripParticipate")
 	 * @ORM\JoinColumn(name="id_child", referencedColumnName="id")
 	 */
 	protected $idChild;

@@ -58,6 +58,11 @@ class Trip
     protected $urlPicture;
 
     /**
+     * @ORM\Column(type="string", length=500)
+     */
+    protected $description;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Director", inversedBy="tripManage")
      * @ORM\JoinColumn(name="login_director", referencedColumnName="user")
      */
@@ -170,6 +175,16 @@ class Trip
     public function setUrlPicture($urlPicture)
     {
         $this->urlPicture = $urlPicture;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     public function getNumberPlace()

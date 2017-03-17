@@ -17,7 +17,7 @@ class AccessChild
 	protected $id;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="User", inversedBy="accessUser")
+	 * @ORM\ManyToOne(targetEntity="User", inversedBy="accessChildren")
 	 * @ORM\JoinColumn(name="login_user", referencedColumnName="login")
 	 */
 	protected $loginUser;

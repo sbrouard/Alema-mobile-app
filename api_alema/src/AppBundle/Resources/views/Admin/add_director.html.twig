@@ -1,0 +1,21 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Ajouter un directeur{% endblock %}
+
+{% block body %}
+	{% if ok is defined %}
+		<div class="alert alert-success">Directeur bien ajouté au séjour</div>
+	{% endif %}
+	<div class="form-style-8">
+  		<h2>Ajouter un directeur</h2>
+		{{ form_start(form) }}
+		{{form_label(form.choiceTrip, "Choissisez le séjour")}}
+		{{form_widget(form.choiceTrip)}}
+		{{form_label(form.choiceDirector, "Choissisez le directeur")}}
+		{{form_widget(form.choiceDirector)}}
+		{{form_widget(form.save)}}
+		{{ form_end(form) }}
+	</div>
+{% endblock %}
+
+

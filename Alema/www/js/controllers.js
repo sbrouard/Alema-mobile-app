@@ -1294,31 +1294,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 
 .controller('accueilGenCtrl', ['$scope', '$state', '$http', '$rootScope', '$ionicModal',
 	function($scope, $state, $http, $rootScope, $ionicModal) {
-		$scope.paris = function(){
-			$scope.showImages();
-		};
-		$scope.showImages = function() {
-			$scope.showModal('templates/general/paris.html');
-		};
-
-		$scope.showModal = function(templateUrl) {
-			$ionicModal.fromTemplateUrl(templateUrl, {
-				scope: $scope,
-				animation: 'slide-in-up'
-			}).then(function(modal) {
-				$scope.modalImg = modal;
-				$scope.modalImg.show();
-			});
-		}
-
-		$scope.closeModal = function() {
-			$scope.modalImg.hide();
-			$scope.modalImg.remove();
-		};
-		$scope.closeParis = function(){
-			console.log("ok");
-			$scope.closeModal();
-		};
+	
 	}
 ])
 

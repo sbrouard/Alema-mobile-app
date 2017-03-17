@@ -1,0 +1,12 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}Supprimer un séjour{% endblock %}
+{% block body %}
+	{% if ok is defined %}
+		<div class="alert alert-success">Séjour bien supprimé</div>
+	{% endif %}
+	{{ form_start(form) }}
+	{{form_label(form.choiceTrip, "Choississez le séjour")}}
+	{{form_widget(form.choiceTrip)}}
+	{{ form_end(form) }}
+{% endblock %}

@@ -25,6 +25,15 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
     public function createToken(Request $request, $providerKey)
     {
 
+        if(preg_match('/\/admin/', $request->getPathInfo()) === 1){
+            return;
+        }
+        if($this->httpUtils->checkRequestPath($request, '/login_check')){
+            return;
+        }
+        if($this->httpUtils->checkRequestPath($request, '/logout')){
+            return;
+        }
         $targetUrl = '/auth-tokens';
         // Si la requête est une création de token, aucune vérification n'est effectuée
         if ($request->getMethod() === "POST" && $this->httpUtils->checkRequestPath($request, $targetUrl)) {
@@ -37,6 +46,21 @@ class AuthTokenAuthenticator implements SimplePreAuthenticatorInterface, Authent
         }
         //Pour une inscription
         if($request->getMethod() === "POST" && ($this->httpUtils->checkRequestPath($request, '/relatives') || $this->httpUtils->checkRequestPath($request, '/users'))){
+            return;
+        }
+
+        //Pour la brochure d'été
+        if($this->httpUtils->checkRequestPath($request, '/brochure-summer')){
+            return;
+        }
+
+        //Pour la brochure d'hiver
+        if($this->httpUtils->checkRequestPath($request, '/brochure-winter')){
+            return;
+        }
+
+        //Pour avoir tous les séjours dans la partie globale
+        if ($request->getMethod() === "GET" && $this->httpUtils->checkRequestPath($request, '/trips')) {
             return;
         }
 

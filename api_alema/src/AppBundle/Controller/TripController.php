@@ -12,6 +12,16 @@ use AppBundle\Entity\Trip;
 class TripController extends Controller
 {
     /**
+     * @Rest\View(serializerGroups={"trip_commun"})
+     * @Rest\Get("/trips")
+     */
+    public function getTripsAction(Request $request){
+        $trips = $this->get('doctrine.orm.entity_manager')
+                ->getRepository('AppBundle:Trip')
+                ->findAll();
+        return $trips; 
+    }
+    /**
     * @Rest\View(serializerGroups={"trip"})
     * @Rest\Get("/trips/{idTrip}")
     */

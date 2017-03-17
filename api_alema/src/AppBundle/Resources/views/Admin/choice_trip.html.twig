@@ -1,0 +1,9 @@
+{% extends "AppBundle:Admin:layout.html.twig" %}
+
+{% block title %}{{title}}{% endblock %}
+{% block body %}
+	{{ form_start(form) }}
+	{{form_label(form.choiceTrip, "Choississez le séjour")}}
+	{{form_widget(form.choiceTrip)}}
+	{{ form_end(form) }}
+{% endblock %}

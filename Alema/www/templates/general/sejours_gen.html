@@ -1,0 +1,31 @@
+<ion-view title="Séjours" hide-back-button="false">
+  <ion-content padding="true" class="has-header" overflow-scroll="false">
+
+
+    <div ng-repeat="sej in sejours_gen" class="containerImg">
+        <span class="sejTitle">Séjour {{sej.name}}</span> <br/><br/>
+
+        <!--<div class="superpose aVenir" ng-if="sej.info === 'A Venir'">{{sej.info}}</div>
+        <div class="superpose fini" ng-if="sej.info === 'Fini'">{{sej.info}}</div>
+        <div class="superpose enCours" ng-if="sej.info === 'En cours'">{{sej.info}}</div>-->
+        <img ng-src="{{sej.urlPicture}}" class="centerImg imgSejour" ng-click="change($index)"/><br>
+        <i class="fa ion-information-circled"> {{sej.description}}</i><br>
+        <i class="fa ion-ios-people"> Nombre de place: {{sej.numberPlace}}</i><br/>
+        <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+		Date de départ : {{sej.dateStart | date : 'dd-MM-yyyy'}}<br/>
+		<i class="fa fa-bus" aria-hidden="true"></i>
+		Lieu de départ : {{sej.placeStart}}<br/>
+		<i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+		Date de fin : {{sej.dateEnd | date : 'dd-MM-yyyy'}}<br/>
+		<i class="fa fa-bus" aria-hidden="true"></i>
+		Lieu d'arrivé : {{sej.placeEnd}}<br/>
+
+		<br><hr/>
+      <div class="spacer-25"></div>
+    </div>
+    <div class="spacer-60"></div>
+  </ion-content>
+
+
+
+</ion-view>

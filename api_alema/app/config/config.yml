@@ -6,9 +6,10 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
     pictures_directory: '%kernel.root_dir%/../web/uploads/pictures'
     actualities_directory: '%kernel.root_dir%/../web/uploads/actualities'
+    brochures_directory: '%kernel.root_dir%/../web/uploads/brochures'
 
 framework:
     #esi:             ~
@@ -74,6 +75,8 @@ fos_rest:
         view_response_listener: true
     format_listener:
         rules:
+            - { path: '^/login', priorities: ['html'], fallback_format: 'html' }
+            - { path: '^/admin', priorities: ['html'], fallback_format: 'html' }
             - { path: '^/', priorities: ['json'], fallback_format: 'json' }
     body_listener:
         enabled: true

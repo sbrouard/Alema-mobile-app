@@ -41,7 +41,7 @@ class Actuality
     public $pictureName;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="idPicture")
+     * @ORM\ManyToOne(targetEntity="Trip", inversedBy="idActuality")
      * @ORM\JoinColumn(name="id_trip", referencedColumnName="id")
      */
     protected $idTrip;
