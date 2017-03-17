@@ -48,6 +48,8 @@ angular.module('app.routes', [])
     controller: 'showActualityCtrl'
   })
 
+
+
   .state('menu.commentaires', {
     url: '/Commentaires',
     views: {
@@ -179,6 +181,17 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('menuGen.sejours_gen',{
+    url: '/Sejours_gen',
+    views: {
+      'side-menuGen': {
+        templateUrl: 'templates/general/sejours_gen.html',
+        controller: 'sejoursCtrl'
+      }
+    }
+  })
+
+
   .state('menuGen.video_gen', {
     url: '/Video_gen',
     views: {
@@ -187,6 +200,7 @@ angular.module('app.routes', [])
       }
     }
   })
+
 
 $urlRouterProvider.otherwise('/Accueil_gen')
 
