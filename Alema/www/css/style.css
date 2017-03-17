@@ -580,6 +580,11 @@ ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidt
     margin-right: 2vh;
 }
 
+.sejTitle{
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
 .paris{
     width: all;
     height: all;
