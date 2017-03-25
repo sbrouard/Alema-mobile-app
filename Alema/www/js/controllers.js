@@ -706,6 +706,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 							template: 'Vos identifiants ne sont pas corrects'
 						});
 					};
+					$scope.load = false;
 					$scope.showAlert();
 				});
 		};
