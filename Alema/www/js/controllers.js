@@ -11,6 +11,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 	$rootScope.brochure = {};
 	$rootScope.brochure.season = '';
 	$rootScope.brochure.type = '';
+	$rootScope.cguAct = true;
 })
 
 .config(function($translateProvider) {
@@ -485,6 +486,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 .controller('addActualityCtrl', ['$scope', '$stateParams', '$rootScope', '$ionicModal', '$ionicSlideBoxDelegate', '$cordovaCamera', '$cordovaFile', '$cordovaFileTransfer', '$cordovaDevice', '$ionicPopup', '$cordovaActionSheet', '$http', '$state',
 	function($scope, $stateParams, $rootScope, $ionicModal, $ionicSlideBoxDelegate, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicPopup, $cordovaActionSheet, $http, $state) {
 		$scope.data = {};
+		$scope.load = false;
 		$scope.loadImage = function() {
 			var options = {
 				title: 'Choisissez votre image',
@@ -700,13 +702,24 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 					$state.go('mesSejours');
 				})
 				.error(function(data, status, headers, config) {
-					$scope.showAlert = function() {
-						var alertPopup = $ionicPopup.alert({
-							title: 'Mauvais Identifiant',
-							template: 'Vos identifiants ne sont pas corrects'
-						});
-					};
-					$scope.load = false;
+					if(data.message === "blocked"){
+						$scope.showAlert = function() {
+							var alertPopup = $ionicPopup.alert({
+								title: 'Interdit',
+								template: 'Vous n\'avez pas accès à ce contenu, pour plus de renseignement contactez nous'
+							});
+						};
+
+					}
+					else{
+						$scope.showAlert = function() {
+							var alertPopup = $ionicPopup.alert({
+								title: 'Mauvais Identifiant',
+								template: 'Vos identifiants ne sont pas corrects'
+							});
+						};
+					}
+					$scope.load = false; 
 					$scope.showAlert();
 				});
 		};
@@ -810,6 +823,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 		$scope.data.user = {};
 		$scope.confirmPassword = {};
 		$scope.style = {};
+		$scope.cgu = {};
 		var relative = false;
 		$scope.signUp = function() {
 			var bool = true;
@@ -819,11 +833,21 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 				};
 				bool = false;
 			}
+			else{
+				$scope.style.login = {
+					'border': 'none'
+				};
+			}
 			if ($scope.data.user.lastname === '' || $scope.data.user.lastname === undefined) {
 				$scope.style.lastname = {
 					'border': '1px solid red'
 				};
 				bool = false;
+			}
+			else{
+				$scope.style.lastname = {
+					'border': 'none'
+				};
 			}
 			if ($scope.data.user.firstname === '' || $scope.data.user.firstname === undefined) {
 				$scope.style.firstname = {
@@ -831,11 +855,21 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 				};
 				bool = false;
 			}
+			else{
+				$scope.style.firstname = {
+					'border': 'none'
+				};
+			}
 			if ($scope.data.user.email === '' || $scope.data.user.email === undefined) {
 				$scope.style.email = {
 					'border': '1px solid red'
 				};
 				bool = false;
+			}
+			else{
+				$scope.style.email = {
+					'border': 'none'
+				};
 			}
 			if ($scope.data.user.plainPassword === '' || $scope.data.user.plainPassword === undefined) {
 				$scope.style.plainPassword = {
@@ -843,11 +877,32 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 				};
 				bool = false;
 			}
+			else{
+				$scope.style.plainPassword = {
+					'border': 'none'
+				};
+			}
 			if ($scope.confirmPassword.confirmPassword === '' || $scope.confirmPassword.confirmPassword === undefined) {
 				$scope.style.confirmPassword = {
 					'border': '1px solid red'
 				};
 				bool = false;
+			}
+			else{
+				$scope.style.confirmPassword = {
+					'border': 'none'
+				};
+			}
+			if ($scope.cgu.cgu === false || $scope.cgu.cgu === undefined) {
+				$scope.style.cgu = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			else{
+				$scope.style.cgu = {
+					'border': 'none'
+				};
 			}
 			if (bool) {
 				if ($scope.data.user.plainPassword !== $scope.confirmPassword.confirmPassword) {
@@ -1307,7 +1362,19 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 ])
 
 
+.controller('cguCtrl', ['$scope', '$rootScope', '$state',
+	function($scope, $rootScope, $state) {
+		$scope.back = function(){
+			if($rootScope.cguAct === true){
+				$state.go("menuGen.accueil_gen");
+			}
+			else{
+				$state.go("inscription");
+			}
+		};
 
+	}
+])
 
 
 

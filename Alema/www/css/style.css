@@ -103,6 +103,17 @@ ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidt
     top: 100%; 
 }
 
+.iconLoadImg{
+    text-align: center;
+    position: absolute;
+    background-color: rgba(0,0,0, 0.5);
+    color: white;
+    height: 10vh;
+    width: 20vh;
+    left: 32%;
+    top: 38vh;
+}
+
 .centerTxt{
     text-align: center;
 }

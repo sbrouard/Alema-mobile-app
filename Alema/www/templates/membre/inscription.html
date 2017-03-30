@@ -30,6 +30,8 @@
         <span class="input-label">Numéro De Famille</span>
         <input type="text" placeholder="Numéro De Famille" ng-model="data.familyNumber">
       </label>
+      <div class="centerLink"><a ui-sref="cgu" ng-click="$root.cguAct = false">Condition générale d'utilisation</a></div>
+      <div ng-style="style.cgu"><input type="checkbox" ng-model="cgu.cgu">J'accepte les conditions générales</div>
       <a id="inscription-button9" class="button button-positive  button-block" ng-click="signUp()">S'inscrire</a>
     </form>
     <div class="spacer-60"></div>

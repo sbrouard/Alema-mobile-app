@@ -132,6 +132,12 @@ angular.module('app.routes', [])
     controller: 'menuGenCtrl'
   })
 
+  .state('cgu', {
+    url: '/Cgu',
+    templateUrl : 'templates/general/cgu.html',
+    controller: 'cguCtrl'
+  })
+
   .state('menuGen.accueil_gen', {
     url: '/Accueil_gen',
     views: {

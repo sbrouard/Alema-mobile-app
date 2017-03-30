@@ -4,7 +4,6 @@
   	</ion-nav-buttons>
     <ion-content padding="true" class="has-header" overflow-scroll="false">
     	<button ng-click="loadImage()" ng-if="$root.role == 'ROLE_DIRECTOR'">Ajouter une image</button>
-    	<div ng-show="load" class="iconLoad"><ion-spinner icon="bubbles"></ion-spinner></div>
     	<i class="icon ion-trash-a deletePhoto" ng-if="$root.role == 'ROLE_DIRECTOR'" ng-click="deleteImg()"></i>
 		<div class="row" ng-repeat="image in pictures" ng-if="$index % 4 === 0">
 	        <div class="col col-25" ng-if="$index < pictures.length">
@@ -23,7 +22,8 @@
 	        	<input type="checkbox" ng-model="pictures[$index + 3].delete" ng-if="$root.role == 'ROLE_DIRECTOR'" ng-true-value="'yes'" ng-false-value="'no'"/>
 	            <img class="photo" ng-src="{{pictures[$index + 3].pictureName}}" ng-click="showImages($index + 3)"/>
 	        </div>
-    </div>
-    <div class="spacer-60"></div>
+    	</div>
+		<div ng-show="load" class="iconLoadImg">Chargement<br/><ion-spinner icon="bubbles"></ion-spinner></div>
+    	<div class="spacer-60"></div>
 	</ion-content>
 </ion-view>
