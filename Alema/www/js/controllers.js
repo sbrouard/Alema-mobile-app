@@ -1035,6 +1035,9 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 				.error(function(data, status, headers, config) {
 
 				});
+			$rootScope.login = '';
+			$rootScope.token = '';
+			$rootScope.role = '';
 			$state.go('alema');
 		}
 	}
