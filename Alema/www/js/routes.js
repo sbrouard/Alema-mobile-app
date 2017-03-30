@@ -157,6 +157,15 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('menuGen.partenaires_gen', {
+    url: '/Partenaires_gen',
+    views: {
+      'side-menuGen': {
+        templateUrl : 'templates/general/partenaires_gen.html'
+      }
+    }
+  })
+
   .state('menuGen.brochure_gen',{
     url: '/Brochure_gen',
     views:{
