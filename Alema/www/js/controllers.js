@@ -1318,7 +1318,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 			if (bool) {
 				$http({
 						method: 'POST',
-						url: $rootScope.url + 'users/' + $scope.login.login + '/access_children/' + idChild,
+						url: $rootScope.url + 'users/' + $scope.login.login + '/access_children/' + $scope.idChild,
 						data: $scope.add,
 						headers: {
 							'X-Auth-Token': $rootScope.token
