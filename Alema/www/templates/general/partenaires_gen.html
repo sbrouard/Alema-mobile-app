@@ -1,3 +1,12 @@
 <ion-view title="Partenaires" hide-back-button="false">
-  <ion-content padding="true" class="has-header" overflow-scroll="false"></ion-content>
+  <ion-content padding="true" class="has-header" overflow-scroll="false">
+	  	<div ng-repeat="partener in parteners">
+			<a href="{{partener.urlSite}}" target="_system"><img class="logoPartener" ng-src="{{partener.urlImg}}"/></a>
+			<div class="descriptionPartener">
+				{{partener.description}}
+			</div>
+			<hr/>
+	  	</div>
+	  	<div class="spacer-60"></div>
+  	</ion-content>
 </ion-view>

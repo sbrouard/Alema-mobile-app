@@ -915,6 +915,16 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 						});
 					};
 					$scope.showAlert();
+				} else if ($scope.data.user.plainPassword.length < 4) {
+					$scope.data.user.plainPassword = '';
+					$scope.confirmPassword.confirmPassword = '';
+					$scope.showAlert = function() {
+						var alertPopup = $ionicPopup.alert({
+							title: 'Erreur',
+							template: 'Votre mot de passe doit être supérieur à 4 caractères'
+						});
+					};
+					$scope.showAlert();
 				} else {
 					if ($scope.data.familyNumber === undefined || $scope.data.familyNumber === '') {
 						$scope.url = $rootScope.url + 'users';
@@ -1459,7 +1469,24 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 	}
 ])
 
-
+.controller('partenaireGenCtrl', ['$scope', '$rootScope', '$state', '$http',
+	function($scope, $rootScope, $state, $http) {
+		$scope.$on("$ionicView.enter", function(event, data) {
+			$http({
+					method: 'GET',
+					url: $rootScope.url + 'parteners'
+				})
+				.success(function(data, status, headers, config) {
+					$scope.parteners = data;
+				})
+				.error(function(data, status, headers, config) {});
+		});
+		$scope.goSite = function(){
+			console.log("ok");
+			//console.log($scope.parteners[id]);
+		};
+	}
+])
 
 
 

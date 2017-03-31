@@ -161,7 +161,8 @@ angular.module('app.routes', [])
     url: '/Partenaires_gen',
     views: {
       'side-menuGen': {
-        templateUrl : 'templates/general/partenaires_gen.html'
+        templateUrl : 'templates/general/partenaires_gen.html',
+        controller: 'partenaireGenCtrl'
       }
     }
   })
