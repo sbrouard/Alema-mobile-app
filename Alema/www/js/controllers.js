@@ -1220,10 +1220,23 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 .controller('askBrochureGenCtrl', ['$scope', '$state', '$rootScope', '$http','$ionicPopup',
 	function($scope, $state, $rootScope, $http, $ionicPopup) {
 		$scope.data = {};
+		$scope.style = {};
 		$scope.sendBrochure = function() {
+			if($rootScope.brochure.season === "Hiver"){
+				$scope.url = "brochure-winter";
+			}
+			else{
+				$scope.url = "brochure-summer";
+			}
+			if($scope.data.email === undefined || $scope.data.email === ''){
+				$scope.style.email = {
+					'border': '1px solid red'
+				};
+				return;
+			}
 			$http({
 				method: 'POST',
-				url: $rootScope.url + 'brochure-summer',
+				url: $rootScope.url + $scope.url,
 				data: $scope.data,
 				headers: {
 					'X-Auth-Token' : $rootScope.token
@@ -1237,7 +1250,7 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 						});
 					};
 					$scope.showAlert();
-					$state.go('mesSejours');
+					$state.go('menuGen.accueil_gen');
 			})
 			.error(function(data, status, headers, config) {
 					$scope.showAlert = function() {
@@ -1248,6 +1261,74 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 					};
 					$scope.showAlert();
 			});
+		};
+		$scope.sendBrochurePoste = function() {
+			var bool = true;
+			if($rootScope.brochure.season === "Hiver"){
+				$scope.url = "brochure-winter";
+			}
+			else{
+				$scope.url = "brochure-summer";
+			}
+			if($scope.data.lastname === undefined || $scope.data.lastname === ''){
+				$scope.style.lastname = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			if($scope.data.firstname === undefined || $scope.data.firstname === ''){
+				$scope.style.firstname = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			if($scope.data.address === undefined || $scope.data.address === ''){
+				$scope.style.address = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			if($scope.data.city === undefined || $scope.data.city === ''){
+				$scope.style.city = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			if($scope.data.postcode === undefined || $scope.data.postcode === ''){
+				$scope.style.postcode = {
+					'border': '1px solid red'
+				};
+				bool = false;
+			}
+			if(bool){
+				$http({
+					method: 'POST',
+					url: $rootScope.url + $scope.url,
+					data: $scope.data,
+					headers: {
+						'X-Auth-Token' : $rootScope.token
+					} 
+				})
+				.success(function(data, status, headers, config) {
+						$scope.showAlert = function() {
+							var alertPopup = $ionicPopup.alert({
+								title: 'Envoi réussi',
+								template: 'La brochure a bien été envoyée !'
+							});
+						};
+						$scope.showAlert();
+						$state.go('menuGen.accueil_gen');
+				})
+				.error(function(data, status, headers, config) {
+						$scope.showAlert = function() {
+							var alertPopup = $ionicPopup.alert({
+								title: 'Erreur',
+								template: 'Une erreur s\'est produite '
+							});
+						};
+						$scope.showAlert();
+				});
+			}
 		};
 	}
 ])
