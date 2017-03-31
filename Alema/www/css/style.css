@@ -288,29 +288,21 @@ ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidt
     text-decoration: underline;
     color: white;
 }
-/* Page d'accueil général */
-.bandeauSocial{
-    background-color: rgb(208, 26, 108);
-    height: auto;
-    width: 100%;
+/* reseaux sociaux */
+#reseaux{
+    overflow: auto;
+    margin-left: auto;
     text-align: center;
-    font-size: 20px;
 }
 
 .iconSocialNetwork{
-    width: 90px;
-    height: 90px;
+    width: auto;
+    height: auto;
 }
-
+/* Page d'accueil général */
 .blocLigne{
     display: flex;
     flex-direction: row;
-}
-
-#lastSocialNetwork{
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
 }
 
 #accueilGen{
