@@ -148,11 +148,11 @@ angular.module('app.routes', [])
     }
   })
 
-  .state('menuGen.actualites_gen', {
-    url: '/Actualies_gen',
+  .state('menuGen.reseaux', {
+    url: '/reseaux',
     views: {
       'side-menuGen': {
-        templateUrl : 'templates/general/actualites_gen.html'
+        templateUrl : 'templates/general/reseaux.html'
       }
     }
   })
