@@ -1200,7 +1200,6 @@ angular.module('app.controllers', ['ionic', 'ui.router', 'ngCordova', 'pascalpre
 
 .controller('brochureGenCtrl', ['$scope', '$state', '$rootScope', '$http',
 	function($scope, $state, $rootScope, $http) {
-		console.log($scope);
 		$scope.brochure = {};
 		$scope.brochure.season = '';
 		$scope.season = function(season){
