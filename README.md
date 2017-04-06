@@ -7,7 +7,7 @@ Presentation of the project:
 This project was conducted by a team of 7 developpers for the association Alema. <br/>
 This application can be run on IOS and Android, it will be available on the stores soon. <br/>
 
-# Alema
+### Alema
 
 Alema is a french association which propose holidays camp for children and langages trips.<br/>
 http://www.alema.asso.fr/
@@ -24,11 +24,15 @@ So each trip's director can publish photos and commentary on the trip's page, an
 Organisation of the repository:
 --------------------------------
 
-This repository contains the code of a mobile application (iOS and android) and a web
-interface for Alema, a french camp company. 
+This repository contains two folder:<br/>
+* Alema contains the code of the mobile application <br/>
+* api_Alema contains the code of the server
 
-* Folder Alema: mobile app<br/>
-* Folder api_alema: "api" (in localhost)
+### The Application
+
+
+
+### The server
 
 ------------------------------------------------------------------------------------------
 
