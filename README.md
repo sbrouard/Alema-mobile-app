@@ -42,7 +42,6 @@ The source code is in "www"<br/>
   * www/templates/membre for the pages accessible only by connected users
 
 
-### The server
 
 ------------------------------------------------------------------------------------------
 
