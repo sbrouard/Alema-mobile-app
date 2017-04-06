@@ -30,6 +30,14 @@ This repository contains two folder:<br/>
 
 ### The Application
 
+The appliaction has been developed using Ionic, which is a framework using AngularJS to make hybrid mobile applications.<br/>
+
+The source code is in "www"<br/>
+* www/css contains the css code
+* www/images containes the images of the application
+* www/js contains the "background of the application: the controllers, the links, ...
+* www/lib contains some ionic librairies
+* www/templates contains the pages of the front-end of the application
 
 
 ### The server
