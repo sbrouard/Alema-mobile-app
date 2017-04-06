@@ -13,8 +13,8 @@ Alema is a french association which propose holidays camp for children and langa
 http://www.alema.asso.fr/
 
 This application will be used for:<br/>
-*Communicate informations to the parents during the trip, sending photos, etc.<br/>
-*Giving informations about the future trips <br/>
+* Communicate informations to the parents during the trip, sending photos, etc.<br/>
+* Giving informations about the future trips <br/>
 
 So each trip's director can publish photos and commentary on the trip's page, and the parents can see and like this content.
 
