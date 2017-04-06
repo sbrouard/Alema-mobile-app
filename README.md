@@ -37,7 +37,9 @@ The source code is in "www"<br/>
 * www/images containes the images of the application
 * www/js contains the "background of the application: the controllers, the links, ...
 * www/lib contains some ionic librairies
-* www/templates contains the pages of the front-end of the application
+* www/templates contains the pages of the front-end of the application. There are two folders:
+  *general for the pages accessible by every users
+  *membre for the pages accessible only by connected users
 
 
 ### The server
