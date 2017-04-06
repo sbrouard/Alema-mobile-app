@@ -35,11 +35,11 @@ The appliaction has been developed using Ionic, which is a framework using Angul
 The source code is in "www"<br/>
 * www/css contains the css code
 * www/images containes the images of the application
-* www/js contains the "background of the application: the controllers, the links, ...
+* www/js contains the "background of the application: the controllers (controllers.js), the links (routes.js), ...
 * www/lib contains some ionic librairies
 * www/templates contains the pages of the front-end of the application. There are two folders:
-  * general for the pages accessible by every users
-  * membre for the pages accessible only by connected users
+  * www/templates/general for the pages accessible by every users
+  * www/templates/membre for the pages accessible only by connected users
 
 
 ### The server
