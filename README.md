@@ -32,6 +32,9 @@ interface for Alema, a french camp company.
 
 ------------------------------------------------------------------------------------------
 
+Application mobile Alema (Français)
+=====================================
+
 * Dossier Alema : application<br/>
 * Dossier api_alema : debut de l’api en localhost (à changer app/config/parameters.yml afin de mettre ses paramètre de connexion)
 
